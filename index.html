@@ -10,27 +10,104 @@
     ></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .container {
+        padding: 0;
+      }
+      .complete-button {
+        font-size: 24px;
+        padding: 6px;
+        margin: 2px;
+        cursor: pointer;
+        border: solid 1px #77dd77;
+      }
+      .complete-button.completed {
+        background-color: #77dd77;
+        color: black;
+      }
+
+      .complete-button:hover {
+        background-color: #6bc66b;
+        color: black;
+        transition: 50ms ease-in;
+      }
+
+      .delete-button {
+        font-size: 24px;
+        margin: 2px;
+        color: black;
+        background-color: #ff6961;
+        padding: 6px;
+        cursor: pointer;
+        border: solid 1px #ff6961;
+      }
+
+      .delete-button:hover {
+        background-color: #e55e57;
+        transition: 50ms ease-in;
+      }
+      .task-detail {
+        margin-top: 10px;
+      }
+      .item.completed {
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+      .item {
+        margin-top: 10px;
+        border: solid 1px transparent;
+        padding: 2px;
+      }
+      .item:hover {
+        border: solid 1px var(--muted-color);
+      }
+    </style>
     <title>Bun-Todo</title>
   </head>
   <body>
-    <header class="container">
+    <header class="container" style="margin-top: 1%">
       <h1>Bun Todo</h1>
     </header>
     <main class="container">
-      <form>
-        <label for="todoInput">Todo Task</label>
-        <input
-          type="text"
-          name="todoInput"
-          aria-label="Create New Task"
-          placeholder="Enter task"
-        />
-        <button type="submit">Create Task</button>
-      </form>
+      <article style="margin-top: 5%">
+        <form
+          hx-post="/todos"
+          hx-target="#todos"
+          hx-ext="json-enc"
+          _="on submit target.reset()"
+        >
+          <label for="newList"
+            >Create New Task
+            <input
+              id="todoInput"
+              type="text"
+              name="todo"
+              aria-label="Create New Task"
+              placeholder="Enter task"
+          /></label>
+          <button type="submit" class="contrast outline">Create Task</button>
+        </form>
+        <hr style="margin: 2rem" />
+        <h3>Your Lists</h3>
+        <div
+          id="todos"
+          hx-get="/todos"
+          hx-trigger="load"
+          style="display: flex; flex-direction: column; margin-top: 1rem"
+        >
+          <div class="container"></div>
+        </div>
+      </article>
     </main>
   </body>
 </html>
