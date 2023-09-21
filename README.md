@@ -1,15 +1,33 @@
 # bun-todo-app
 
-To install dependencies:
+This is a todo application created using Bun, a fast all-in-one JavaScript runtime.
 
-```bash
+## Installation
+
+To install the dependencies, run the following command:
+
+```
 bun install
 ```
 
-To run:
+## Running the Application
 
-```bash
+To run the application, use the following command:
+
+```
 bun run index.tsx
 ```
 
-This project was created using `bun init` in bun v1.0.1. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Project Structure
+
+The project consists of the following files:
+
+- `index.html`: Contains the HTML structure of the application.
+
+- `index.tsx`: Contains the main TypeScript file for the application.
+
+- `package.json`: Contains the project configuration and dependencies.
+
+- `404.html`: Contains the HTML for the 404 Not Found page.
+
+- `tsconfig.json`: Contains the TypeScript compiler configuration.
