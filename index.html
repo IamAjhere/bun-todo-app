@@ -84,7 +84,7 @@
           hx-post="/todos"
           hx-target="#todos"
           hx-ext="json-enc"
-          _="on submit target.reset()"
+          _="on submit target.reset() set .all.checked to true "
         >
           <label for="newList"
             >Create New Task
@@ -94,19 +94,59 @@
               name="todo"
               aria-label="Create New Task"
               placeholder="Enter task"
+              required
+              autocomplete="off"
           /></label>
+
           <button type="submit" class="contrast outline">Create Task</button>
         </form>
         <hr style="margin: 2rem" />
         <h3>Your Lists</h3>
+        <label for="all">
+          <input
+            type="radio"
+            id="all"
+            class="all"
+            value="all"
+            name="sort"
+            hx-get="/todos"
+            hx-target="#todos"
+            checked="true"
+          />
+          All
+        </label>
+
+        <label for="done">
+          <input
+            type="radio"
+            id="done"
+            class="done"
+            name="sort"
+            value="done"
+            hx-get="/todos"
+            hx-target="#todos"
+          />
+          Done
+        </label>
+
+        <label for="undone">
+          <input
+            type="radio"
+            id="undone"
+            name="sort"
+            class="undone"
+            value="undone"
+            hx-get="/todos"
+            hx-target="#todos"
+          />
+          Undone
+        </label>
         <div
           id="todos"
-          hx-get="/todos"
+          hx-get="/todos?sort=all"
           hx-trigger="load"
           style="display: flex; flex-direction: column; margin-top: 1rem"
-        >
-          <div class="container"></div>
-        </div>
+        ></div>
       </article>
     </main>
   </body>
