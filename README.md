@@ -31,3 +31,8 @@ The project consists of the following files:
 - `404.html`: Contains the HTML for the 404 Not Found page.
 
 - `tsconfig.json`: Contains the TypeScript compiler configuration.
+
+## Screenshot of Interface
+
+![Screenshot of the frontend interface](Frontend-Screenshot.png)
+
